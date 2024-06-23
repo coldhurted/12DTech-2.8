@@ -2,15 +2,35 @@
 <html>
 
 <head>
-     <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
-    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
-    <script src="https://rawgit.com/donmccurdy/aframe-extras/v2.1.1/dist/aframe-extras.loaders.min.js"></script>
+    <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width">
+      <title>Add a title here</title>
+      <link href="style.css" rel="stylesheet" type="text/css" />
+      <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+      <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+      <script src="https://rawgit.com/donmccurdy/aframe-extras/v2.1.1/dist/aframe-extras.loaders.min.js"></script>
+      <script src="https://rawgit.com/donmccurdy/aframe-extras/v5.0.0/dist/aframe-extras.min.js"></script>
 </head>
 
 <body>
-    <a-scene>
-        <a-sky src="Images/space.jpg"></a-sky>
+      <a-scene physics="gravity: -9.8;restitution: 0.1" inspector-plugin-recast>
+
+          <a-gltf-model
+              src="Navmesh/navmesh (1).gltf"
+              nav-mesh
+              visible="false"
+              position="0 -0.1 0"
+          ></a-gltf-model>
+
+            <a-entity id="rig" position="0 0 0" movement-conf  trols="constrainToNavMesh: true;speed:0.5;">
+              <a-entity camera id="camera" position="0 1.6 0" look-controls
+                extended-wasd-controls>
+              </a-entity>
+            </a-entity>
+
+          <a-sky src="Images/space.jpg"></a-sky>
+
         <a-plane src="Images/floortexture.jpg" rotation="-90 90 0" height="4" width="4" position="0 0 0"></a-plane>
         <a-box src="Images/wall texture crop 2.png" rotation="0 90 0" height="2.659" width="1" depth="0.1" position="2 1.3 -1.5"></a-box>
         <a-box src="Images/wall texture crop 2.png" rotation="0 90 0" height="2.659" width="1" depth="0.1" position="2 1.3 1.5"></a-box>
@@ -35,6 +55,70 @@
             <a-asset-item id="door1" src="Models/door.glb" response-type="arraybuffer"></a-asset-item>
             <a-asset-item id="window" src="Models/window.glb" response-type="arraybuffer"></a-asset-item>       
         </a-assets>
+
+        <!-- Stars -->
+        <a-sphere
+            radius="0.5" position="0.3 5 -50"
+            animation="
+            property: position;
+            from: -200 5 6;
+            to: 50 5 6;
+            dur: 2000;
+            loop: true;
+            "
+        ></a-sphere>
+        <a-sphere
+            radius="0.5" position="-4.5 0 -30"
+            animation="
+            property: position;
+            from: -1000 0 4.5;
+            to: 10 0 4.5;
+            dur: 3500;
+            loop: true;
+            "
+        ></a-sphere>
+        <a-sphere
+            radius="0.5" position="2.4 1 -110"
+            animation="
+            property: position;
+            from: -1000 1 8.4;
+            to: 3500 1 8.4;
+            dur: 3000;
+            loop: true;
+            "
+        ></a-sphere>
+        <a-sphere
+            radius="0.5" position="5.5 8 -25"
+            animation="
+            property: position;
+            from: -1000 8 -5.5;
+            to: 10 8 -5.5;
+            dur: 2000;
+            loop: true;
+            "
+        ></a-sphere>
+        <a-sphere
+            radius="0.5" position="5.6 -2.1 -22"
+            animation="
+            property: position;
+            from: -1000 -2.1 -10;
+            to: 10 -2.1 -10;
+            dur: 4000;
+            loop: true;
+            "
+        ></a-sphere>
+        <a-sphere
+            radius="0.5" position="-5.5 6.6 -33"
+            animation="
+            property: position;
+            from: -1000 6.6 -5.5;
+            to: -10 6.6 -5.5;
+            dur: 5000;
+            loop: true;
+            "
+            ></a-sphere>
+
+    </a-scene>
             
 </body>
 
